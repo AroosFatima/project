@@ -60,7 +60,6 @@ const WebTask = () => {
         completed: !taskToToggle.completed,
       };
 
-      // console.log(updatedTask)
       const updatedIncompleteTasks = incompleteTasks.filter(
         (task) => task.id !== taskId
       );
