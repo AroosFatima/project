@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+  Router,
+  Routes,
+  BrowserRouter,
+} from "react-router-dom";
 
+import "./App.css";
+import { Provider } from "react-redux";
+import store from "./Store";
+// import Redux from "./Redux";
+import Home from "./pages/Home.js";
+import Product from "./pages/Product.js";
+import ShopCart from "./pages/ShopCart.js";
+
+import Banner from "./components/Banner";
+import Fav from "./pages/Fav.js";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/baner",
+    element: <Banner />,
+  },
+  {
+    path: "/product",
+    element: <Product />,
+  },
+  {
+    path: "/cart",
+    element: <ShopCart />,
+  },
+  {
+    path: "/fav",
+    element: <Fav />,
+  },
+]);
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </Provider>
   );
 }
 
 export default App;
+{
+  /* <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/category" element={<Category />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </BrowserRouter> */
+}
