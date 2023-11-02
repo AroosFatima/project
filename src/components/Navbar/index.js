@@ -9,14 +9,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.products);
-  // console.log("items", items);
   const [search, setSearch] = useState("");
   const filterProducts = cartItems.map((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())
   );
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearch(filterProducts);
   };
   return (
     <>
