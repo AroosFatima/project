@@ -3,6 +3,9 @@ const CartSlice = createSlice({
   name: "cart",
   initialState: {
     products: [],
+    Fav: [],
+
+    search: "",
   },
   reducers: {
     add(state, action) {
@@ -19,7 +22,13 @@ const CartSlice = createSlice({
         state.products.push(newProduct);
       }
     },
-
+    addFav(state, action) {
+      const item = state.Fav.push(action.payload);
+    },
+    setSearch(state, action) {
+      state.search = action.payload;
+      console.log(action.payload, "action");
+    },
     remove(state, action) {
       return {
         products: state.products.filter((item) => item.id !== action.payload),
@@ -27,5 +36,5 @@ const CartSlice = createSlice({
     },
   },
 });
-export const { add, remove } = CartSlice.actions;
+export const { add, remove, setSearch, addFav } = CartSlice.actions;
 export default CartSlice.reducer;

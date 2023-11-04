@@ -1,21 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
+import { setSearch } from "../../Store/slices/CartSlice";
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const favourite = useSelector((state) => state.cart.Fav);
   const cartItems = useSelector((state) => state.cart.products);
-  const [search, setSearch] = useState("");
-  const filterProducts = cartItems.map((product) =>
-    product.title.toLowerCase().includes(search.toLowerCase())
-  );
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const query = e.target.elements["default-search"].value;
+    dispatch(setSearch(query));
   };
+
   return (
     <>
       <div className="py-2 px-6  flex justify-between border border-slate-300 bg-black min-h-[30px]"></div>
@@ -45,8 +46,6 @@ const Navbar = () => {
                 <label
                   for="default-search"
                   class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
                 >
                   Search
                 </label>
@@ -64,7 +63,7 @@ const Navbar = () => {
                 </div>
               </form>{" "}
               <Link to={"/fav"}>
-                <span className="text-gray-400">{cartItems.length}</span>
+                <span className="text-gray-400">{favourite.length}</span>
                 <FavoriteBorderIcon
                   style={{ color: "black", PaddingRight: "6px" }}
                 />
