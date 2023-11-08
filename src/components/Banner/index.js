@@ -10,19 +10,25 @@ const Banner = () => {
           <div className="md:w-1/2 px-10">
             <div className="flex space-bwteen py-7">
               <img src={apple} className="h-10 w-10" />
-              <span className=" text-sm uppercase  px-[20px] pt-3">
-                iPhone 14 Series
+              <span className=" text-base font-400   px-[20px] pt-3">
+                iPhone 14 Series{" "}
               </span>
             </div>
             <p className="text-4xl font-bold  ">
               Up to 10% <br /> off Voucher
             </p>
-            <a href="#" className=" py-8 text-white  uppercase text-xs  ">
-              Shop Now
-            </a>
-            <span className="pl-4">
-              <EastIcon />
-            </span>
+            <div className="flex">
+              <a href="#" className=" py-8 text-white   text-base  ">
+                Shop Now
+                <span>
+                  <hr className="white " />
+                </span>
+              </a>
+
+              <span className="pl-4 pt-8">
+                <EastIcon />
+              </span>
+            </div>
           </div>
           <div className=" h-[300px] w-[400px] pr-30  mr-[40px]">
             <img src={mobile} alt="img" className="w-[400px] h-[300px]" />

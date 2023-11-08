@@ -7,7 +7,7 @@ import Card from "../components/Card";
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      <Navbar active="home" />
       <Banner />
       <Card />
     </div>

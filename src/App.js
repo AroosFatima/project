@@ -24,10 +24,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
   },
-  {
-    path: "/baner",
-    element: <Banner />,
-  },
+
   {
     path: "/product",
     element: <Product />,
@@ -52,13 +49,3 @@ function App() {
 }
 
 export default App;
-{
-  /* <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/category" element={<Category />} />
-            <Route path="/cart" element={<Cart />} />
-          </Routes>
-        </BrowserRouter> */
-}

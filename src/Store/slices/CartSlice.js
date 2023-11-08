@@ -12,9 +12,7 @@ const CartSlice = createSlice({
       const existingProduct = state.products.find(
         (product) => product.id === action.payload.id
       );
-      if (existingProduct) {
-        existingProduct.quantity += action.payload.quantity;
-      } else {
+      if (!existingProduct) {
         const newProduct = {
           ...action.payload,
           quantity: action.payload.quantity,
@@ -23,11 +21,13 @@ const CartSlice = createSlice({
       }
     },
     addFav(state, action) {
-      const item = state.Fav.push(action.payload);
+      const item = state.Fav.find(
+        (product) => product.id === action.payload.id
+      );
+      item ? state.Fav.splice(item, 1) : state.Fav.push(action.payload);
     },
     setSearch(state, action) {
       state.search = action.payload;
-      console.log(action.payload, "action");
     },
     remove(state, action) {
       return {

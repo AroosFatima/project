@@ -4,7 +4,7 @@ import Box from "../components/Box";
 const Product = () => {
   return (
     <>
-      <Navbar />
+      <Navbar active="product" />
 
       <Box />
     </>
